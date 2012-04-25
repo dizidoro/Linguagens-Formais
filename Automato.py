@@ -8,8 +8,9 @@ class Automato:
         
         
     def is_dfa(self):
-        for transition in self.__transitions: 
-            if len(self.__transitions[transition]) > 1: #mais de um possivel estado para uma mesma transicao
+        for transition in self.__transitions:
+            next_states = self.__transitions[transition]
+            if len(next_states) > 1: #mais de um possivel proximo estado para uma mesma transicao
                 return True
         return False
         
@@ -24,10 +25,10 @@ class Automato:
     #simular automato derteministico
     def __dfa_sim(self, string, current_state):
         if string == "": #se string estiver vazia
-            return (current_state in self.__accepting_states) #True se está em estado aceitador
+            return (current_state in self.__accepting_states) #True se esta em estado aceitador
         else:
             character = string[0] #pega primeiro caracter da string de entrada
-            if (current_state, character) in self.__transitions: #ve se há transicao naquele estado com este caracter
+            if (current_state, character) in self.__transitions: #ve se ha transicao naquele estado com este caracter
                 next_state = self.__transitions[(current_state, character)]
                 remaining_string = string[1:]
                 return __dfa_sim(remaining_string, next_state)
@@ -35,7 +36,7 @@ class Automato:
                 return False #nao existe transicao nesse estado com este caracter
             
                 
-    #simular automato não deterministico
+    #simular automato nao deterministico
     def __ndfa_sim(self, string, current_state):
         if string == "":
             return (current_state in self.__accepting_states)
