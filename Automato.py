@@ -1,9 +1,12 @@
 class Automato:
     
-    def __init__(self, transitions, initial_state, accepting_states):   
+    def __init__(self, transitions, initial_state, accepting_states):
+        assert transistions.__class__ == {}.__class__
+        assert initial_state.__class == (1).__class__
+        assert accepting_states.__class__ == [].__class__   
         self.__transitions = transitions
         self.__initial_state = initial_state
-        self.__accepting_states = accepting_states
+        self.__accepting_states = set(accepting_states)
         self.__is_dfa = self.is_dfa()
         
         
@@ -16,6 +19,7 @@ class Automato:
         
     #simular automato finito
     def fa_sim(self, input_string):
+        assert input_string.__class__ == "".__class__
         if self.__is_dfa:
             return self.__dfa_sim(input_string, self.__initial_state)
         else:
