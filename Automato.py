@@ -1,21 +1,27 @@
 class Automato:
     
     def __init__(self, transitions, initial_state, accepting_states):
-        assert transitions.__class__ == {}.__class__
-        assert initial_state.__class__ == (1).__class__
-        assert accepting_states.__class__ == [].__class__   
+        assert transitions.__class__ == dict
+        assert initial_state.__class__ == int
+        assert accepting_states.__class__ == list  
         self.__transitions = transitions
         self.__initial_state = initial_state
         self.__accepting_states = set(accepting_states)
-        self.__is_dfa = self.is_dfa()
+        self.__is_dfa = self.__is_dfa()
         
-        
+    #PUBLICO
     def is_dfa(self):
+        return self.__is_dfa
+    
+
+    #eh um automato deterministico?
+    def __is_dfa(self):
         for transition in self.__transitions:
             next_states = self.__transitions[transition]
             if len(next_states) > 1: #mais de um possivel proximo estado para uma mesma transicao
                 return True
         return False
+    
         
     #simular automato finito
     def fa_sim(self, input_string):
@@ -24,8 +30,8 @@ class Automato:
             return self.__dfa_sim(input_string, self.__initial_state)
         else:
             return self.__ndfa_sim(input_string, self.__initial_state)
-            
-            
+    
+    
     #simular automato derteministico
     def __dfa_sim(self, string, current_state):
         if string == "": #se string estiver vazia
