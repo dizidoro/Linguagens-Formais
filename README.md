@@ -2,7 +2,7 @@ This is our work for computer science's discipline: "Formal Languages and Compil
 
 To do
 =====
-    Elaborate an application with a graphic interface to manipulate finite automatons and regular expressions that envolves the following operations:
+Elaborate an application with a graphic interface to manipulate finite automatons and regular expressions that envolves the following operations:
 
 1 Editing, saving and reading finite automatons and regular expressions
 2 Determinizing a non-deterministic finite automaton
