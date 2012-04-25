@@ -17,9 +17,9 @@ class Automato:
     #simular automato finito
     def fa_sim(self, input_string):
         if self.__is_dfa:
-            return __dfa_sim(input_string, self.__initial_state)
+            return self.__dfa_sim(input_string, self.__initial_state)
         else:
-            return __ndfa_sim(input_string, self.__initial_state)
+            return self.__ndfa_sim(input_string, self.__initial_state)
             
             
     #simular automato derteministico
@@ -31,7 +31,7 @@ class Automato:
             if (current_state, character) in self.__transitions: #ve se ha transicao naquele estado com este caracter
                 next_state = self.__transitions[(current_state, character)]
                 remaining_string = string[1:]
-                return __dfa_sim(remaining_string, next_state)
+                return self.__dfa_sim(remaining_string, next_state)
             else:
                 return False #nao existe transicao nesse estado com este caracter
             
@@ -46,7 +46,7 @@ class Automato:
                 next_states = self.__transitions[(current_state, character)]
                 remaining_string = string[1:]
                 for next_state in next_states: #simula para cada um dos estados
-                    result = __ndfa_sim(remaining_string, next_state)
+                    result = self.__ndfa_sim(remaining_string, next_state)
                     if result:
                         return True #um dos ramos aceitou, nao precisa continuar simulacao
                 return False #nenhum ramo aceitou
