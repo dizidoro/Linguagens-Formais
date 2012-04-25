@@ -8,7 +8,7 @@ class Automato:
         
         
     def is_dfa(self):
-        for state in self.__transitions
+        for state in self.__transitions:
             if len(self.__transitions[state]) > 1:
                 return True
         return False
