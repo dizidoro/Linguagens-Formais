@@ -53,10 +53,9 @@ class Automato:
                 return False #nao existe transicao nesse estado com este caracter
 
     
-    def determinize(self):
-        if self.__is_dfa:
-            return self
-        
-        
+    #def determinize(self):
+     #   if self.__is_dfa:
+      #      return self        
+       # .... 
     
     
