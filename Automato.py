@@ -8,8 +8,8 @@ class Automato:
         
         
     def is_dfa(self):
-        for state in self.__transitions:
-            if len(self.__transitions[state]) > 1:
+        for transition in self.__transitions: 
+            if len(self.__transitions[transition]) > 1: #mais de um possivel estado para uma mesma transicao
                 return True
         return False
         
