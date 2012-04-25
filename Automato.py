@@ -16,9 +16,9 @@ class Automato:
     #simular automato finito
     def fa_sim(self, input_string):
         if self.__is_dfa:
-            return dfa_sim(input_string, self.__initial_state)
+            return __dfa_sim(input_string, self.__initial_state)
         else:
-            return ndfa_sim(input_string, self.__initial_state)
+            return __ndfa_sim(input_string, self.__initial_state)
             
             
     #simular automato derteministico
