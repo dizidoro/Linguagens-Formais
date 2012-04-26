@@ -71,13 +71,13 @@ class Automato:
         if string == "":
             return (current_state in self.__accepting_states)  # True se esta em estado aceitador
         else:
-            character = string[0]  # pega primeiro caracter da string de entrada
+            character = string[0]
             if (current_state, character) in self.__transitions:
                 next_state = self.__transitions[(current_state, character)]
                 remaining_string = string[1:]
                 return self.__dfa_simulate(remaining_string, next_state)
             else:
-                return False  # transicao nao existe
+                return False
 
     def __ndfa_simulate(self, string, current_state):
         """simulate non-deterministic automaton
@@ -94,10 +94,10 @@ class Automato:
             if (current_state, character) in self.__transitions:
                 next_states = self.__transitions[(current_state, character)]
                 remaining_string = string[1:]
-                for next_state in next_states:  # simula para cada um dos possiveis estados
+                for next_state in next_states:  # Simula para cada um dos possiveis estados
                     result = self.__ndfa_simulate(remaining_string, next_state)
                     if result:
-                        return True  # um dos ramos aceitou
-                return False  # nenhum ramo aceitou
+                        return True  # Um dos ramos aceitou
+                return False
             else:
-                return False  # nao existe transicao nesse estado com este caracter
+                return False
