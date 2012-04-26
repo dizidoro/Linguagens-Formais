@@ -1,15 +1,14 @@
-#Example
+"""Test example for simulating an Automato"""
 from Automato import Automato
 
+
 def main():
-    transitions = {  
-                    (0, "a"):[1], #(estado, "caracter") : [lista de estados]
-                    (1, "b"):[1]
-                  }
+    """main"""
+    transitions = {(0, "a"): [1],  # (estado, "caracter") : [lista de estados]
+                    (1, "b"): [1]}
 
     initial_state = 0
-    accepting_states = [1]              
-              
+    accepting_states = [1]
     automato = Automato(transitions, initial_state, accepting_states)
 
     print "Automaton"
@@ -20,19 +19,20 @@ def main():
     print
     print "Tests"
     print "====="
-    print "Automaton accepts 'a': " + str(automato.fa_sim("a"))
-    print "Automaton accepts 'ab': " + str(automato.fa_sim("ab"))
-    print "Automaton accepts 'aba': " + str(automato.fa_sim("aba"))
-    print "Automaton accepts 'abbbb': " + str(automato.fa_sim("aba"))
+    print "Automaton accepts 'a': " + str(automato.fa_simulate("a"))
+    print "Automaton accepts 'ab': " + str(automato.fa_simulate("ab"))
+    print "Automaton accepts 'aba': " + str(automato.fa_simulate("aba"))
+    print "Automaton accepts 'abbbb': " + str(automato.fa_simulate("aba"))
     print
- 
+
     string = raw_input("Your turn, insert a string :")
-    result = automato.fa_sim(string)
+    result = automato.fa_simulate(string)
 
     if(result):
         print "Your string was accepted by the automaton!"
     else:
         print "Your string was NOT accepted by the automaton!"
+
 
 if __name__ == '__main__':
     main()
