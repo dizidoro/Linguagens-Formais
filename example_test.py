@@ -1,6 +1,8 @@
 """Test example for simulating an Automato"""
 from Automato import Automato
 
+__authors__ = 'Diego Izidoro e Peterson C. Oliveira'
+
 
 def main():
     """main"""

@@ -1,5 +1,7 @@
 """Automato Module holds the Automato class"""
 
+__authors__ = 'Diego Izidoro e Peterson C. Oliveira'
+
 
 class Automato:
     """Automato class:
@@ -14,7 +16,7 @@ class Automato:
     def __init__(self, transitions, initial_state, accepting_states):
         """instanciates a automaton.
         Args:
-            transitions of the automaton: eg {(1, "a"): 1}
+            transitions of the automaton: eg {(1, "a"): 1} or {(1, "b"): [1,2]}
             initial_state: state automaton starts recognizement
             accepting_states: list of automaton accepting states
         """
@@ -36,15 +38,15 @@ class Automato:
     def __deterministic(self):
         """determin if that automaton is deterministic
         Returns: boolean
-            True if there is more than one possible state for at least one
+            True if there isn't more than one possible state for at least one
         transition
         """
         for transition in self.__transitions:
             next_states = self.__transitions[transition]
-            if len(next_states) > 1:
+            if next_states.__class__ == list:
                 # mais de um possivel proximo estado para uma mesma transicao
-                return True
-        return False
+                return False
+        return True
 
     def fa_simulate(self, input_string):
         """simulates the finite automato recongnizement
@@ -103,7 +105,7 @@ class Automato:
                     if result:
                         return True
                         # um dos ramos aceitou,
-                        # nao precisa continuar simulateulacao
+                        # nao precisa continuar simulacao
                 return False
                 # nenhum ramo aceitou
             else:
