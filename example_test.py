@@ -6,8 +6,8 @@ __authors__ = 'Diego Izidoro e Peterson C. Oliveira'
 
 def main():
     """main"""
-    transitions = {(0, "a"): [1],  # (estado, "caracter") : [lista de estados]
-                    (1, "b"): [1]}
+    transitions = {(0, "a"): 1,  # (estado, "caracter") : [lista de estados]
+                    (1, "b"): 1}
 
     initial_state = 0
     accepting_states = [1]
