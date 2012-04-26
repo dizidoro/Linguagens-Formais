@@ -16,7 +16,8 @@ class Automato:
     def __init__(self, transitions, initial_state, accepting_states):
         """instanciates a automaton.
         Args:
-            transitions of the automaton: eg {(1, "a"): 1} or {(1, "b"): [1,2]}
+            transitions of the automaton: eg. dfa -- {(1, "a"): 1} or
+                                             ndfa -- {(1, "b"): [1,2]}
             initial_state: state automaton starts recognizement
             accepting_states: list of automaton accepting states
         """
