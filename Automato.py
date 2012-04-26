@@ -33,7 +33,6 @@ class Automato:
         """
         return self.__is_deterministic
 
-    #eh um automato deterministico?
     def __deterministic(self):
         """determin if that automaton is deterministic
         Returns: boolean
@@ -47,7 +46,6 @@ class Automato:
                 return True
         return False
 
-    #simular automato finito
     def fa_simulate(self, input_string):
         """simulates the finite automato recongnizement
         Args:
@@ -61,7 +59,6 @@ class Automato:
         else:
             return self.__ndfa_simulate(input_string, self.__initial_state)
 
-    #simular automato derteministico
     def __dfa_simulate(self, string, current_state):
         """simulate deterministic automaton
         Args:
@@ -85,7 +82,6 @@ class Automato:
                 return False
                 # nao existe transicao nesse estado com este caracter
 
-    #simulateular automato nao deterministico
     def __ndfa_simulate(self, string, current_state):
         """simulate non-deterministic automaton
         Args:
@@ -113,8 +109,3 @@ class Automato:
             else:
                 return False
                 # nao existe transicao nesse estado com este caracter
-
-    #def determinize(self):
-     #   if self.__is_deterministic:
-      #      return self
-       # ....
