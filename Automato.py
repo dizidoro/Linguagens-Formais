@@ -37,7 +37,7 @@ class Automato:
         return self.__is_deterministic
 
     def __deterministic(self):
-        """determin if that automaton is deterministic
+        """determin if the automaton is deterministic
         Returns: boolean
             True if there isn't more than one possible state for at least one
         transition
@@ -46,6 +46,36 @@ class Automato:
             next_states = self.__transitions[transition]
             if next_states.__class__ == list:  # mais de um possivel proximo estado para uma mesma transicao
                 return False
+        return True
+
+    def is_empty(self):
+        """determin if the automaton recognizes no string
+        Returns: boolean or string
+            True if does not recognizes any string, not even epsilon
+            An example string it accepts
+        """
+        return __is_empty(self.__initial_state)
+
+    def __is_empty(self, current_state, visited=[]):
+        """determin if the automaton recognizes no string
+        Args:
+            current_state: state we are currently visiting
+            visited: list of visited
+        Returns: boolean or string
+            True if recognizes no strings, not even epsilon
+            An example string it accepts
+        """
+        if current_state in visited:
+            return True
+        visited.append(current_state)
+        if current in accepting:
+            return ""
+        for (state, character), next_states in self.__transitions.items():
+            if state == current_state:
+                for next_state in next_states:
+                    result = is_empty(next_state, visited)
+                    if result is not    True:
+                        return character + result
         return True
 
     def fa_simulate(self, input_string):
